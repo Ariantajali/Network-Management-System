@@ -30,7 +30,7 @@ A comprehensive Client-Server desktop application designed for network administr
 
 ## 📸 Screenshots
 
-*(Note: Add your screenshots to the Screenshots folder and link them here)*
+
 ![Dashboard](Screenshots/dashboard.png)
 ![Client Control](Screenshots/client_control.png)
 
