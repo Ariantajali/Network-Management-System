@@ -1,0 +1,59 @@
+﻿<mah:MetroWindow x:Class="Neywork_Manengment.ClientsControl"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 Title="Control Panel" Height="400" Width="400" WindowStartupLocation="CenterScreen" Background="#CCE6F3">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- اطلاعات کلاینت -->
+        <Border Background="#F0F0F0" CornerRadius="8" Padding="15" Grid.Row="0">
+            <StackPanel>
+                <TextBlock Text="Client Information" FontWeight="Bold" FontSize="16" Margin="0 0 0 10"/>
+                <TextBlock x:Name="lblSystemName" Text="System Name: ..." FontSize="14"/>
+                <TextBlock x:Name="lblIp" Text="IP Address: ..." FontSize="14"/>
+                <TextBlock x:Name="lblStatus" Text="Status: ..." FontSize="14"/>
+                <TextBlock x:Name="lblCpu" Text="CPU: ..." FontSize="14"/>
+                <TextBlock x:Name="lblRam" Text="RAM: ..." FontSize="14"/>
+                <TextBlock x:Name="lblDisk" Text="Disk: ..." FontSize="14"/>
+            </StackPanel>
+        </Border>
+
+        <!-- دکمه‌ها -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Margin="0 20 0 0">
+            <Button Width="70" Height="70" Margin="5" Background="IndianRed" Click="Shutdown_Click">
+                <StackPanel>
+                    <iconPacks:PackIconMaterial Kind="Power" Width="24" Height="24"/>
+                    <TextBlock Text="Shutdown" FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Width="70" Height="70" Margin="5" Background="Orange" Click="Restart_Click">
+                <StackPanel>
+                    <iconPacks:PackIconMaterial Kind="Restart" Width="24" Height="24"/>
+                    <TextBlock Text="Restart" FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Width="70" Height="70" Margin="5" Background="DodgerBlue" Click="Lock_Click">
+                <StackPanel>
+                    <iconPacks:PackIconMaterial Kind="Lock" Width="24" Height="24"/>
+                    <TextBlock Text="Lock" FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Width="70" Height="70" Margin="5" Background="MediumSeaGreen" Click="Message_Click">
+                <StackPanel>
+                    <iconPacks:PackIconMaterial Kind="Message" Width="24" Height="24"/>
+                    <TextBlock Text="Message" FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

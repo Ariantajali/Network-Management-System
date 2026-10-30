@@ -1,0 +1,58 @@
+﻿<mah:MetroWindow x:Class="Neywork_Manengment.MainDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Dashboard" Height="600" Width="800"
+        Background="#CCE6F3"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal" Margin="20" ItemWidth="200" ItemHeight="100">
+
+            <!-- Clients -->
+            <mah:Tile Width="200" Height="100" Background="#1ABC9C" Title="Clients" Click="Clients_Click">
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="AccountMultiple" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+            
+            <!-- File Transfer -->
+            <mah:Tile x:Name="File_Transfer" Width="200" Height="100" Background="#9B59B6" Title="File Transfer" Click="File_Transfer_Click" >
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="FileUpload" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+            <!-- File Transfer -->
+            <mah:Tile x:Name="Install_Program" Width="200" Height="100" Background="#5C49A9" Title="Install Programs" Click="Install_Program_Click" >
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="Apps" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+
+            <!-- Freeze/Unfreeze -->
+            <mah:Tile x:Name="DeepFreezeControl" Click="DeepFreezeControl_Click" Width="200" Height="100" Background="#E67E22" Title="Freeze/Unfreeze" >
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="Snowflake" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+
+            <!-- Remote Desktop -->
+            <mah:Tile x:Name="RemoteTile" Width="200" Height="100" Background="#E74C3C" Title="Remote Desktop" Click="Remote_Click">
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="Monitor" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+
+            <!-- User Management -->
+            <mah:Tile x:Name="UserManagement" Width="200" Height="100" Background="#2ECC71" Title="User Management" Click="UserManagement_Click">
+                <mah:Tile.Content>
+                    <iconPacks:PackIconMaterial Kind="AccountCog" Width="32" Height="32" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </mah:Tile.Content>
+            </mah:Tile>
+        </WrapPanel>
+    </Grid>
+</mah:MetroWindow>

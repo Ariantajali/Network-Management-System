@@ -1,0 +1,107 @@
+﻿<mah:MetroWindow x:Class="Neywork_Manengment.DeepFreezeControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Neywork_Manengment"
+        mc:Ignorable="d"
+        Title="Deep Freeze Manager" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="White">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title -->
+            <RowDefinition Height="*"/>
+            <!-- DataGrid -->
+            <RowDefinition Height="Auto"/>
+            <!-- DFC Path -->
+            <RowDefinition Height="Auto"/>
+            <!-- Actions -->
+            <RowDefinition Height="Auto"/>
+            <!-- Status -->
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+        <TextBlock Text="Deep Freeze Client Manager"
+               FontSize="20"
+               FontWeight="Bold"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,10"/>
+
+        <!-- Clients Grid -->
+        <DataGrid x:Name="ClientsDataGrid"
+              Grid.Row="1"
+              AutoGenerateColumns="False"
+              SelectionMode="Single"
+              SelectionUnit="FullRow"
+              Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Header="Select" Binding="{Binding IsSelected, Mode=TwoWay}" Width="60"/>
+                <DataGridTextColumn Header="System Name" Binding="{Binding SystemName}" Width="*"/>
+                <DataGridTextColumn Header="IP Address" Binding="{Binding IPAddress}" Width="*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                <DataGridTextColumn Header="CPU Usage" Binding="{Binding CPU}" Width="*"/>
+                <DataGridTextColumn Header="RAM Usage" Binding="{Binding RAM}" Width="*"/>
+                <DataGridTextColumn Header="Disk Usage" Binding="{Binding Disk}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- DFC Path -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Text="DFC.exe Path:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="DfcPathInput"
+                 Width="400"
+                 Text="C:\Program Files (x86)\Faronics\Deep Freeze Enterprise\DFC.exe"/>
+        </StackPanel>
+
+        <!-- Action Controls -->
+        <WrapPanel Grid.Row="3" HorizontalAlignment="Center" Margin="0,0,0,10" ItemHeight="40" ItemWidth="180">
+            <TextBlock Text="Action:" VerticalAlignment="Center" Margin="5,0"/>
+            <ComboBox x:Name="ActionComboBox" Width="150" Margin="5,0">
+                <ComboBoxItem Tag="FREEZE">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="Snowflake" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="FREEZE"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="THAW">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="Fire" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="THAW"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="LOCK">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="Lock" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="LOCK"/>
+                    </StackPanel>
+                </ComboBoxItem>
+                <ComboBoxItem Tag="UNLOCK">
+                    <StackPanel Orientation="Horizontal">
+                        <iconPacks:PackIconMaterial Kind="LockOpen" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="UNLOCK"/>
+                    </StackPanel>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock Text="Password:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <PasswordBox x:Name="PasswordInput" Width="150" Margin="0,0,10,0"/>
+
+            <Button Content="Execute" Click="SendCommand_Click" Width="130" Margin="5"/>
+            <Button Content="Execute for Selected" Click="SendCommandToSelected_Click" Width="160" Margin="5"/>
+            <Button Content="Execute for All" Click="SendCommandToAll_Click" Width="140" Margin="5"/>
+            <Button Content="Refresh Clients" Click="RefreshClients_Click" Width="150" Margin="5"/>
+        </WrapPanel>
+        <!-- Status Text -->
+        <TextBlock x:Name="StatusText"
+               Grid.Row="4"
+               FontSize="12"
+               Foreground="Gray"
+               TextWrapping="Wrap"
+               TextAlignment="Center"
+               Margin="0,0,0,5"/>
+    </Grid>
+</mah:MetroWindow>

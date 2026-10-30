@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Agent_Client</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+	 <ApplicationIcon>Icon\icon2.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\ArianTj\.nuget\packages\windowsinput\6.4.1\contentFiles\any\net6.0-windows7.0\.nuget\mouse-keyboard-hook-logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Icon\icon2.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Interop.IWshRuntimeLibrary" Version="1.0.1" />
+    <PackageReference Include="Sang.RemoteViewing" Version="2.0.1" />
+    <PackageReference Include="System.Management" Version="9.0.4" />
+    <PackageReference Include="System.Reactive.Windows.Forms" Version="6.0.1" />
+    <PackageReference Include="WindowsInput" Version="6.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icon\icon2.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+</Project>

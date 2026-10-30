@@ -1,0 +1,86 @@
+﻿<mah:MetroWindow x:Class="Neywork_Manengment.UserManagementWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="User Management"
+        Height="600" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3F6FA">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Card Form -->
+        <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="8" Opacity="0.2" ShadowDepth="2"/>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Add New User"
+                           FontSize="20" FontWeight="Bold"
+                           Foreground="#2C3E50" Margin="0,0,0,15"/>
+
+                <!-- Inputs Row -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10" VerticalAlignment="Center">
+                    <TextBox x:Name="UsernameBox" Width="180" Margin="0,0,10,0"
+                             mah:TextBoxHelper.Watermark="Username"/>
+                    <PasswordBox x:Name="PasswordBox" Width="180" Margin="0,0,10,0"
+                                 mah:TextBoxHelper.Watermark="Password"/>
+                    <ComboBox x:Name="RoleComboBox" Width="130" Margin="0,0,10,0"
+                              SelectedIndex="1">
+                        <ComboBoxItem Content="admin"/>
+                        <ComboBoxItem Content="user"/>
+                    </ComboBox>
+                    <Button Content="Add User" Width="120" Height="32" Click="AddUser_Click"
+                            Background="#3498DB" Foreground="White" FontWeight="SemiBold"/>
+                </StackPanel>
+
+                <!-- Permissions -->
+                <WrapPanel>
+                    <CheckBox x:Name="RemotePermission" Content="Remote Desktop" Margin="10,0"/>
+                    <CheckBox x:Name="FileTransferPermission" Content="File Transfer" Margin="10,0"/>
+                    <CheckBox x:Name="InstallPermission" Content="Install Program" Margin="10,0"/>
+                    <CheckBox x:Name="FreezePermission" Content="Freeze Control" Margin="10,0"/>
+                    <CheckBox x:Name="UserManagementPermission" Content="User Management" Margin="10,0"/>
+                </WrapPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Users Table -->
+        <DataGrid x:Name="UsersGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  Margin="0"
+                  HeadersVisibility="Column"
+                  RowHeaderWidth="0"
+                  GridLinesVisibility="None"
+                  SelectionMode="Single"
+                  ColumnHeaderHeight="35"
+                  RowHeight="32">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*" />
+                <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="120" />
+                <DataGridTextColumn Header="Permissions" Binding="{Binding Permissions}" Width="400" />
+                <DataGridTemplateColumn Header="Actions" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete"
+                                    Tag="{Binding Username}"
+                                    Click="DeleteUser_Click"
+                                    Background="#E74C3C"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    Height="26"
+                                    Padding="5,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</mah:MetroWindow>

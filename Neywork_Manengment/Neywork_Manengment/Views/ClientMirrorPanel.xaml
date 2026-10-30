@@ -1,0 +1,58 @@
+﻿<mah:MetroWindow x:Class="Neywork_Manengment.Views.ClientMirrorPanel"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:models="clr-namespace:Neywork_Manengment.Models"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 WindowStartupLocation="CenterScreen"
+                 Title="Mirror Desktop" Width="800" Height="500">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <Button Width="120" Height="30"
+                    Click="Refresh_Click"
+                    Margin="0 0 10 0">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="Refresh" Width="16" Height="16" Margin="0 0 5 0"/>
+                    <TextBlock Text="Refresh Clients"/>
+                </StackPanel>
+            </Button>
+            
+            <Button x:Name="BtnStartMirror"
+                    Width="170" Height="30"
+                    Click="StartMirror_Click">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterial Kind="MonitorShare" Width="20" Height="20" Margin="0 0 5 0"/>
+                    <TextBlock Text="Monitor Share"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <DataGrid x:Name="ClientsDataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding}"
+                  HeadersVisibility="Column">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="System Name" Binding="{Binding SystemName}" Width="*"/>
+                <DataGridTextColumn Header="IP" Binding="{Binding IPAddress}" Width="*"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="*"/>
+                <DataGridTemplateColumn Header="Operation" Width="120">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Padding="5"
+                                    Click="ShowDesktop_Click">
+                                <iconPacks:PackIconMaterial Kind="EyeOutline" Width="20" Height="20"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</mah:MetroWindow>
